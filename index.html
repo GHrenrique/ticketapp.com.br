@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="pt">
+
 <head>
     <title>Ticket.app</title>
     <meta name="description"
@@ -30,7 +33,6 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 
-
 <style>
     @import url(https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@50..200,200..900&family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap);
 
@@ -43,6 +45,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        height: 100vh;
         font-family: "Syne", sans-serif;
         font-optical-sizing: auto;
     }
@@ -54,7 +57,20 @@
     * {
         margin: 0;
         padding: 0;
+    }
 
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #9bf9b3;
+        border-radius: 10px;
+        height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: #000;
     }
 
     p {
@@ -86,8 +102,31 @@
     }
 </style>
 
-<p>→ A VIBE AQUI É BOA 🎊 ✨ 🎟️</p>
+<body>
+    <header>
+        <p>→ A VIBE AQUI É BOA 🎊 ✨ 🎟️</p>
+    </header>
 
-<figure>
-    <img src="ticketapp.svg" alt="ticketapp" title="ticketapp">
-</figure>
+    <section>
+        <article>
+            <figure>
+                <img src="ticketapp.svg" alt="ticketapp" title="ticketapp">
+            </figure>
+        </article>
+    </section>
+
+    <footer>
+    </footer>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSMSKSVS9P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JSMSKSVS9P');
+    </script>
+</body>
+
+</html>
