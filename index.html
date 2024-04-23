@@ -36,27 +36,11 @@
 <style>
     @import url(https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@50..200,200..900&family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap);
 
-    body {
-        background-image: linear-gradient(to right, #000019, #03011f, #070225, #09032b, #0c0431, #0d0636, #0e073b, #110840, #130946, #170a4b, #1a0951, #1e0957);
-        min-height: 100%;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        font-family: "Syne", sans-serif;
-        font-optical-sizing: auto;
-    }
-
-    figure {
-        width: 9rem;
-    }
-
     * {
         margin: 0;
         padding: 0;
+        outline: none;
+        text-decoration: none;
     }
 
     ::-webkit-scrollbar {
@@ -73,7 +57,31 @@
         background-color: #000;
     }
 
-    p {
+    html,
+    body {
+        height: 100%;
+        max-height: 100%;
+    }
+
+    body {
+        background-image: linear-gradient(to right, #000019, #03011f, #070225, #09032b, #0c0431, #0d0636, #0e073b, #110840, #130946, #170a4b, #1a0951, #1e0957);
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Syne", sans-serif;
+        font-optical-sizing: auto;
+    }
+
+    figure {
+        width: 9rem;
+    }
+
+
+    span {
         background-color: rgb(155, 249, 179);
         display: flex;
         position: absolute;
@@ -95,6 +103,82 @@
         box-sizing: border-box;
     }
 
+    .loading-container {
+        text-align: center;
+        opacity: 1;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .loading-bar {
+        width: 200px;
+        height: 20px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .loading-bar-progress {
+        height: 100%;
+        background-color: #4CAF50;
+        width: 0;
+        transition: width 1s ease-in-out;
+    }
+
+    .content {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes scroll-up {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    article {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    p {
+        color: #fff;
+        font-weight: 900;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        font-size: 0.8rem;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Inconsolata';
+        font-weight: 900;
+    }
+
+    .loading-container {
+        position: relative;
+    }
+
     @media only screen and (max-width: 600px) {
         p {
             font-size: 0.85rem;
@@ -104,19 +188,24 @@
 
 <body>
     <header>
-        <p>→ A VIBE AQUI É BOA 🎊 ✨ 🎟️</p>
+        <span>→ A VIBE AQUI É BOA 🎊 ✨ 🎟️</span>
     </header>
 
     <section>
-        <article>
+        <article class="">
             <figure>
                 <img src="ticketapp.svg" alt="ticketapp" title="ticketapp">
             </figure>
+
+            <div class="loading-container">
+                <div class="loading-bar">
+                    <div class="loading-bar-progress"></div>
+                </div>
+
+                <p>70%</p>
+            </div>
         </article>
     </section>
-
-    <footer>
-    </footer>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSMSKSVS9P"></script>
@@ -126,6 +215,18 @@
         gtag('js', new Date());
 
         gtag('config', 'G-JSMSKSVS9P');
+
+        setTimeout(() => {
+            const progressBar = document.querySelector('.loading-bar-progress');
+            progressBar.style.width = '70%';
+
+            const loadingContainer = document.querySelector('.loading-container');
+            const content = document.querySelector('.content');
+            setTimeout(() => {
+                content.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+            }, 1000);
+        }, 2000);
     </script>
 </body>
 
